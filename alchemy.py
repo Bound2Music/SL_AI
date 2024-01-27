@@ -1,8 +1,8 @@
+import sqlalchemy
 import streamlit as st
 from sqlalchemy.engine import create_engine
 import pandas as pd
 from sqlalchemy.engine.url import URL
-# import sqlalchemy
 from dotenv import load_dotenv
 import json
 from openai import OpenAI
