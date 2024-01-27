@@ -1,8 +1,8 @@
-#import sqlalchemy
 import streamlit as st
 from sqlalchemy.engine import create_engine
 import pandas as pd
 from sqlalchemy.engine.url import URL
+# import sqlalchemy
 from dotenv import load_dotenv
 import json
 from openai import OpenAI
@@ -129,16 +129,16 @@ def ask():
         )
 
 
-ask2 = ask()
-tableList = []
-for row  in tablelist:
-    for columns in tablelist:
-        tableList += [tablelist.get(columns)] 
+# ask2 = ask()
+# tableList = []
+# for row  in tablelist:
+#     for columns in tablelist:
+#         tableList += [tablelist.get(columns)] 
 
-tempList = ["hello", "testing", "now"]
+# tempList = ["hello", "testing", "now"]
 
 
-print(tableList[1:2])
+# print(tableList[1:2])
 
 st.sidebar.text_input("Name", "Enter Name")
 st.sidebar.text_input("Password", "Enter Password")
