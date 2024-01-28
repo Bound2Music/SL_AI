@@ -2,4 +2,5 @@ sqlalchemy
 pandas
 streamlit
 openai
+dotenv
 
