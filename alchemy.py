@@ -32,7 +32,6 @@ url = URL.create(
     database= database1,
      query=dict({"driver": "ODBC Driver 17 for SQL Server"})  # Specify the ODBC driver
 )
-# database_url = "mssql+pyodbc://azuresa:@c0d1ng99!@azuretestsvr.database.windows.net/projectdb?driver=ODBC+Driver+17+for+SQL+Server"
 
 # Create the SQLAlchemy engine
 engine = create_engine(url)
