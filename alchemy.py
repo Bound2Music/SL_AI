@@ -1,4 +1,4 @@
-import sqlalchemy
+
 import streamlit as st
 from sqlalchemy.engine import create_engine
 import pandas as pd
@@ -14,15 +14,23 @@ load_dotenv()
 def convert_df(df):
     return 
 
+# Set Environment Variables
+drivername1 = os.environ.get('DRIVER_NAME')
+username1 = os.environ.get('USER_NAME')
+password1 = os.environ.get('PASSWORD')
+host1 = os.environ.get('HOST')
+database1 = os.environ.get('DATABASE')
+query1 = os.environ.get('QUERY_DRIVER')
+
 # Database connection URL
 url = URL.create(
-    drivername="mssql+pyodbc",
-    username="azuresa",
-    password="@c0d1ng99!",
-    host="azuretestsvr.database.windows.net",  # e.g., "localhost" or a remote server address
+    drivername= drivername1,
+    username= username1,
+    password= password1,
+    host= host1,  # e.g., "localhost" or a remote server address
     # port="1433",  # Default port for SQL Server
-    database="projectdb",
-    query=dict({"driver": "ODBC Driver 17 for SQL Server"})  # Specify the ODBC driver
+    database= database1,
+     query=dict({"driver": "ODBC Driver 17 for SQL Server"})  # Specify the ODBC driver
 )
 # database_url = "mssql+pyodbc://azuresa:@c0d1ng99!@azuretestsvr.database.windows.net/projectdb?driver=ODBC+Driver+17+for+SQL+Server"
 
@@ -34,6 +42,8 @@ def getData():
     st.write("Enter your query")
     prompt = st.text_input("Enter")
     return prompt
+
+
 
 
 def gpt():
@@ -129,7 +139,7 @@ def ask():
         )
 
 
-# ask2 = ask()
+ask2 = ask()
 # tableList = []
 # for row  in tablelist:
 #     for columns in tablelist:
