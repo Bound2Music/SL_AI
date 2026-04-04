@@ -35,7 +35,7 @@ url = URL.create(
     database= database1,
      query={"driver": "ODBC Driver 18 for SQL Server",
            "Encrypt": "yes",
-           "TrustServerCertificate": "no"}
+           "TrustServerCertificate": "yes"}
 
      # "Encrypt": "yes",
       #      "TrustServerCertificate": "no",
