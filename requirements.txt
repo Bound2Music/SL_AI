@@ -4,4 +4,4 @@ streamlit
 openai
 python-dotenv
 pyodbc
-matplotlib.pyplot
+matplotlib
