@@ -9,6 +9,8 @@ from openai import OpenAI
 import os
 import matplotlib.pyplot as plt
 
+
+
 load_dotenv()
 
 @st.cache
@@ -32,9 +34,14 @@ url = URL.create(
     # port="1433",  # Default port for SQL Server
     database= database1,
      query={"driver": "ODBC Driver 18 for SQL Server"}
+
+     # "Encrypt": "yes",
+      #      "TrustServerCertificate": "no",
+       #     "Connection Timeout": "30"
     # query=dict({"driver": "ODBC Driver 17 for SQL Server"})  # Specify the ODBC driver
 )
 # database_url = "mssql+pyodbc://azuresa:@c0d1ng99!@azuretestsvr.database.windows.net/projectdb?driver=ODBC+Driver+17+for+SQL+Server"
+
 
 # Create the SQLAlchemy engine
 engine = create_engine(url)
@@ -96,7 +103,7 @@ st.title("SQL Server Natural Language Data Viewer")
 try:
         with engine.connect() as connection:
             # query = "SELECT * FROM PRODUCTS"  # Replace 'PRODUCTS' with your actual table name if different
-            tables = "SELECT TABLE_NAME FROM projectdb.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'"
+            tables = "SELECT TABLE_NAME FROM javafx.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'"
             tablelist = pd.read_sql(tables, connection)
             # st.bar_chart(df, x="Product", y="Uom", color="Product")
            
@@ -118,7 +125,7 @@ def ask():
                 query = gpt()  # Replace 'PRODUCTS' with your actual table name if different
                 df = pd.read_sql(query, connection)
                 st.write(df)
-                st.bar_chart(df, x="Product", y="Uom", color="Product")
+                st.bar_chart(df, x="Product", y="Quantity", color="Product")
             
                 
         except Exception as e:
