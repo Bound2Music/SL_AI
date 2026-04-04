@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import json
 from openai import OpenAI
 import os
+import matplotlib.pyplot as plt
 
 load_dotenv()
 
@@ -30,8 +31,10 @@ url = URL.create(
     host= host1,  # e.g., "localhost" or a remote server address
     # port="1433",  # Default port for SQL Server
     database= database1,
-     query=dict({"driver": "ODBC Driver 17 for SQL Server"})  # Specify the ODBC driver
+     query={"driver": "ODBC Driver 18 for SQL Server"}
+    # query=dict({"driver": "ODBC Driver 17 for SQL Server"})  # Specify the ODBC driver
 )
+# database_url = "mssql+pyodbc://azuresa:@c0d1ng99!@azuretestsvr.database.windows.net/projectdb?driver=ODBC+Driver+17+for+SQL+Server"
 
 # Create the SQLAlchemy engine
 engine = create_engine(url)
