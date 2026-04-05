@@ -125,7 +125,7 @@ def ask():
                 query = gpt()  # Replace 'PRODUCTS' with your actual table name if different
                 df = pd.read_sql(query, connection)
                 st.write(df)
-                st.bar_chart(df, x="Product", y="uom", color="Product")
+                st.bar_chart(df, x="Product", y="Uom", color="Product")
             
                 
         except Exception as e:
