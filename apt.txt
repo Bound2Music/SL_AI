@@ -1,6 +1,0 @@
-# Microsoft ODBC Driver 18 dependencies
-curl
-gnupg
-msodbcsql18
-unixodbc
-unixodbc-dev
