@@ -33,7 +33,7 @@ url = URL.create(
     host= host1,  # e.g., "localhost" or a remote server address
     # port="1433",  # Default port for SQL Server
     database= database1,
-     query={"driver": "ODBC Driver 18 for SQL Server",
+     query={"driver": "ODBC Driver 17 for SQL Server",
            "Encrypt": "yes",
            "TrustServerCertificate": "yes"}
 
