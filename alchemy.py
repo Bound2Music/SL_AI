@@ -52,15 +52,6 @@ def getData():
     prompt = st.text_input("Enter")
     return prompt
 
-
-
-
-# 2. Convert the aliases into instructions for the GPT
-alias_instructions = "\n".join(
-    f"- {field}: {', '.join(aliases)}"
-    for field, aliases in FIELD_ALIASES.items()
-)
-
 def gpt():
 
     client = OpenAI(
@@ -110,8 +101,8 @@ def gpt():
         #     {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
         #   ]
         messages=[{"role": "system",
-                    "content":f
-                    """You are an AI assistant that is able to convert natural language into a properly formatted SQL query. The tables you will be querying is from the projectdb database.
+                    "content":f"""
+                    You are an AI assistant that is able to convert natural language into a properly formatted SQL query. The tables you will be querying is from the projectdb database.
                     Here is the schema of the table: {schema}
                     
                    SEMANTIC FIELD MAPPING:
