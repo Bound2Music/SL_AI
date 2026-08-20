@@ -66,39 +66,51 @@ def gpt():
     client = OpenAI(
         api_key=os.environ.get("OPENAI_API_KEY")
     )
+
+        product_aliases = [
+        "product",
+        "products",
+        "car",
+        "cars",
+        "auto",
+        "autos",
+        "automobile",
+        "automobiles",
+        "brand",
+        "brands",
+        "car brand",
+        "car brands",
+        "auto brand",
+        "auto brands"
+    ]
+
+    alias_instructions = f"""
+    The following words and phrases are semantic aliases for PRODUCTS.Product:
+
+    {", ".join(product_aliases)}
+
+    If the user refers to any of these concepts, use the actual database
+    column PRODUCTS.Product.
+
+    Never generate columns such as:
+    PRODUCTS.Car
+    PRODUCTS.Cars
+    PRODUCTS.Brand
+    PRODUCTS.Brands
+    PRODUCTS.Auto
+    PRODUCTS.Autos
+    """
     #completion = client.chat.completions.create(
     #completion = openai.ChatCompletion.create(
     completion = client.chat.completions.create(
         #model="text-davinci-003",
-        FIELD_ALIASES = {
-            "Product": [
-            "product", "products",
-            "car", "cars",
-            "brand", "brands"
-                ],
-        "Country": [
-            "country", "countries",
-            "market", "markets",
-            "region", "regions"
-            ],
-        "Year": [
-            "year", "years",
-            "model year", "model years"
-            ]
-        },
-
-        # 2. Convert the aliases into instructions for the GPT
-        alias_instructions = "\n".join(
-            f"- {field}: {', '.join(aliases)}"
-            for field, aliases in FIELD_ALIASES.items()
-                ),
         model="gpt-3.5-turbo",
         #   messages=[
         #     {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
         #     {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
         #   ]
         messages=[{"role": "system",
-                    "content":
+                    "content":f
                     """You are an AI assistant that is able to convert natural language into a properly formatted SQL query. The tables you will be querying is from the projectdb database.
                     Here is the schema of the table: {schema}
                     
