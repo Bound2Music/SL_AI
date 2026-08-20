@@ -109,7 +109,7 @@ def gpt():
         messages=[{"role": "system",
                     "content":f"""
                     You are an AI assistant that is able to convert natural language into a properly formatted SQL query. The tables you will be querying is from the projectdb database.
-                    Here is the schema of the table: {schema}
+                    #Here is the schema of the table: {schema}
                     
                    SEMANTIC FIELD MAPPING:
                     The following user terms all refer to the PRODUCTS.Product column:
