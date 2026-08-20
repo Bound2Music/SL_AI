@@ -58,11 +58,15 @@ def gpt():
         api_key=os.environ.get("OPENAI_API_KEY")
     )
 
-    #schema = """
-    #PRODUCTS (
-    #    Product VARCHAR(255)
-    #)
-    #"""
+    schema = """
+    PRODUCTS (
+        id INT,
+        Product_id VARCHAR(255),
+        Product VARCHAR(255),
+        Uom INT,
+        Attr VARCHAR(255)
+    )
+    """
 
     product_aliases = [
     "product",
