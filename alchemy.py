@@ -74,7 +74,32 @@ def gpt():
                     """You are an AI assistant that is able to convert natural language into a properly formatted SQL query. The tables you will be querying is from the projectdb database.
                     Here is the schema of the table: {schema}
                     
-                    If the prompt mentions the word product, car, cars, brand, brands or any derivative equate that to the field Product in the PRODUCTS table
+                   SEMANTIC FIELD MAPPING:
+                    The following user terms all refer to the PRODUCTS.Product column:
+                    
+                    - product
+                    - products
+                    - car
+                    - cars
+                    - brand
+                    - brands
+                    - vehicle
+                    - vehicles
+                    - model
+                    - models
+
+                    When any of these terms, including reasonable singular/plural variations,
+                    appear in the user's request, interpret them as referring to PRODUCTS.Product.
+                    
+                    Examples:
+                    - "show me all cars" -> SELECT Product FROM PRODUCTS;
+                    - "list the brands" -> SELECT Product FROM PRODUCTS;
+                    - "what products are available?" -> SELECT Product FROM PRODUCTS;
+                    - "show me the car brands" -> SELECT Product FROM PRODUCTS;
+                    
+                    IMPORTANT:
+                    Do not assume that a column named Car, Cars, Brand, or Brands exists.
+                    Always use the actual database column PRODUCTS.Product for these concepts.
                     
                     You must always output your answer in JSON format with the following key-value pairs:
                     - "query": the SQL query that you generated 
