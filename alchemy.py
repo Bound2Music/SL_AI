@@ -55,7 +55,36 @@ def getData():
 
 
 
+# 2. Convert the aliases into instructions for the GPT
+alias_instructions = "\n".join(
+    f"- {field}: {', '.join(aliases)}"
+    for field, aliases in FIELD_ALIASES.items()
+)
+
 def gpt():
+FIELD_ALIASES = {
+    "Product": [
+        "product", "products",
+        "car", "cars",
+        "brand", "brands"
+    ],
+    "Country": [
+        "country", "countries",
+        "market", "markets",
+        "region", "regions"
+    ],
+    "Year": [
+        "year", "years",
+        "model year", "model years"
+    ]
+}
+
+
+# 2. Convert the aliases into instructions for the GPT
+alias_instructions = "\n".join(
+    f"- {field}: {', '.join(aliases)}"
+    for field, aliases in FIELD_ALIASES.items()
+)
 
     client = OpenAI(
         api_key=os.environ.get("OPENAI_API_KEY")
@@ -77,16 +106,7 @@ def gpt():
                    SEMANTIC FIELD MAPPING:
                     The following user terms all refer to the PRODUCTS.Product column:
                     
-                    - product
-                    - products
-                    - car
-                    - cars
-                    - brand
-                    - brands
-                    - vehicle
-                    - vehicles
-                    - model
-                    - models
+                    {alias_instructions}
 
                     When any of these terms, including reasonable singular/plural variations,
                     appear in the user's request, interpret them as referring to PRODUCTS.Product.
