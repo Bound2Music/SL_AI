@@ -67,21 +67,21 @@ def gpt():
         api_key=os.environ.get("OPENAI_API_KEY")
     )
 
-        product_aliases = [
-        "product",
-        "products",
-        "car",
-        "cars",
-        "auto",
-        "autos",
-        "automobile",
-        "automobiles",
-        "brand",
-        "brands",
-        "car brand",
-        "car brands",
-        "auto brand",
-        "auto brands"
+    product_aliases = [
+    "product",
+    "products",
+    "car",
+    "cars",
+    "auto",
+    "autos",
+    "automobile",
+    "automobiles",
+    "brand",
+    "brands",
+    "car brand",
+    "car brands",
+    "auto brand",
+    "auto brands"
     ]
 
     alias_instructions = f"""
