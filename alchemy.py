@@ -128,6 +128,7 @@ def gpt():
                     - "list the brands" -> SELECT Product FROM PRODUCTS;
                     - "what products are available?" -> SELECT Product FROM PRODUCTS;
                     - "show me the car brands" -> SELECT Product FROM PRODUCTS;
+                    - "show me all Mazda(or any car brand) cars -> Select * FROM PRODUCTS WHERE Product Like '%Mazda%'
                     
                     IMPORTANT:
                     Do not assume that a column named Car, Cars, Brand, or Brands exists.
