@@ -85,13 +85,13 @@ def gpt():
             "year", "years",
             "model year", "model years"
             ]
-        }
+        },
 
         # 2. Convert the aliases into instructions for the GPT
         alias_instructions = "\n".join(
             f"- {field}: {', '.join(aliases)}"
             for field, aliases in FIELD_ALIASES.items()
-                )
+                ),
         model="gpt-3.5-turbo",
         #   messages=[
         #     {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
