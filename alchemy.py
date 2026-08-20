@@ -62,29 +62,6 @@ alias_instructions = "\n".join(
 )
 
 def gpt():
-FIELD_ALIASES = {
-    "Product": [
-        "product", "products",
-        "car", "cars",
-        "brand", "brands"
-    ],
-    "Country": [
-        "country", "countries",
-        "market", "markets",
-        "region", "regions"
-    ],
-    "Year": [
-        "year", "years",
-        "model year", "model years"
-    ]
-}
-
-
-# 2. Convert the aliases into instructions for the GPT
-alias_instructions = "\n".join(
-    f"- {field}: {', '.join(aliases)}"
-    for field, aliases in FIELD_ALIASES.items()
-)
 
     client = OpenAI(
         api_key=os.environ.get("OPENAI_API_KEY")
@@ -93,6 +70,28 @@ alias_instructions = "\n".join(
     #completion = openai.ChatCompletion.create(
     completion = client.chat.completions.create(
         #model="text-davinci-003",
+        FIELD_ALIASES = {
+            "Product": [
+            "product", "products",
+            "car", "cars",
+            "brand", "brands"
+                ],
+        "Country": [
+            "country", "countries",
+            "market", "markets",
+            "region", "regions"
+            ],
+        "Year": [
+            "year", "years",
+            "model year", "model years"
+            ]
+        }
+
+        # 2. Convert the aliases into instructions for the GPT
+        alias_instructions = "\n".join(
+            f"- {field}: {', '.join(aliases)}"
+            for field, aliases in FIELD_ALIASES.items()
+                )
         model="gpt-3.5-turbo",
         #   messages=[
         #     {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
