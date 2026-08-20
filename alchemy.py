@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 load_dotenv()
 
-@st.cache
+@st.cache_data
 def convert_df(df):
     return 
 
