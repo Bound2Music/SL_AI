@@ -49,6 +49,7 @@ engine = create_engine(url)
 
 def getData():
     st.write("Enter your query")
+    st.write("Example: return all records in the products table")
     prompt = st.text_input("Enter")
     return prompt
 
