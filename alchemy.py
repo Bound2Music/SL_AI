@@ -146,7 +146,7 @@ def gpt():
         #prompt=user_input,
         #prompt = getData(),
 
-        max_tokens = 500
+        max_completion_tokens = 500
 
     )
     index = completion.choices[0].message.content
